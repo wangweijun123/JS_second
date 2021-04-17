@@ -1,0 +1,39 @@
+<!-- 最外层容器左右结构 -->
+<div class="container">
+
+    <!-- 左边容器 -->
+    <div class="left-container" >
+        <text class="title-text">{{headTitle}}</text>
+        <text class="paragraph-text ">{{paragraphFirst}}</text>
+        <!-- 点赞按钮 -->
+        <div class="like-container" onclick="clickZan">
+            <image class="zan-img" src="{{isZan ? zanImagePressed : zanImageNormal}}"/>
+            <text class="number-text">{{number}}</text>
+        </div>
+        <!-- 跳转第二个页面 -->
+        <button type="capsule" onclick="launch">跳转第二个页面</button>
+        <dialog>
+            <list>
+                <list-item for="{{persons}}">
+                    <text>{{$item}}</text>
+                </list-item>
+            </list>
+        </dialog>
+        <text class="paragraphSecond-text">{{paragraphSecond}}</text>
+
+        <!-- 评论区 -->
+        <div class="commit-container">
+            <text class="commit-text" if="{{!isCommit}}">评论</text>
+            <text class="commit-text" if="{{isCommit}}">{{inputValue}}</text>
+            <!--div容器 默认横向摆放-->
+            <div class="wrap-comment">
+                <input class="comment" value="{{inputValue}}" onchange="updateValue"></input>
+                <text class="done-text" onclick="submitCommit">提交</text>
+            </div>
+        </div>
+    </div>
+    <!-- 右边容器 -->
+    <div class="right-container" >
+        <image class="img" src="{{middleImage}}" />
+    </div>
+</div>

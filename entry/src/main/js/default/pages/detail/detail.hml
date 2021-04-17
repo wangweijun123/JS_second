@@ -1,0 +1,8 @@
+<div class="container">
+    <div >
+        <text class="title">This is the detail page.</text>
+    </div>
+    <div >
+        <button type="capsule" value="Go back" onclick="launch"></button>
+    </div>
+</div>

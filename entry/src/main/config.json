@@ -8,8 +8,7 @@
     },
     "apiVersion": {
       "compatible": 4,
-      "target": 5,
-      "releaseType": "Beta1"
+      "target": 5
     }
   },
   "deviceConfig": {},

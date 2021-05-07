@@ -23,8 +23,8 @@
 
         <!-- 评论区 -->
         <div class="commit-container">
-            <text class="commit-text" if="{{!isCommit}}">评论</text>
-            <text class="commit-text" if="{{isCommit}}">{{inputValue}}</text>
+                <text class="commit-text" if="{{!isCommit}}">评论</text>
+                <text class="commit-text" if="{{isCommit}}">{{inputValue}}</text>
             <!--div容器 默认横向摆放-->
             <div class="wrap-comment">
                 <input class="comment" value="{{inputValue}}" onchange="updateValue"></input>

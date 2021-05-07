@@ -1,0 +1,20 @@
+.container {
+    flex-direction: column;
+}
+/* 子绝 父相对*/
+.txt-image {
+    position: relative;
+}
+.image {
+    position: absolute;
+}
+
+.button {
+    margin-top: 10px;
+}
+.title {
+    font-size: 35px;
+    background-color: aqua;
+    position: relative;
+}
+

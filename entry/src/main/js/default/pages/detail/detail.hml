@@ -1,8 +1,20 @@
 <div class="container">
-    <div >
-        <text class="title">This is the detail page.</text>
+    <div class="txt-image">
+        <text class="title" if="true">This is the detail page.</text>
     </div>
-    <div >
-        <button type="capsule" value="Go back" onclick="launch"></button>
-    </div>
+
+    <button type="capsule" value="Go back" onclick="launch"></button>
+
+    <button class="button" type="capsule" value="调用java内部服务" onclick="callInternalService"></button>
+
+    <text>{{result}}</text>
+    <button class="button" type="capsule" value="调用java外部进程的部服务" onclick="callOutterService"></button>
+    <button class="button" type="capsule" value="js数据类型测试" onclick="dataTypeTest"></button>
+    <button class="button" type="capsule" value="js array 数组测试" onclick="arrayTest"></button>
+    <button class="button" type="capsule" value="js undefined 测试" onclick="undefinedTest"></button>
+    <button class="button" type="capsule" value="js 函数内置一个nb的形参arguments数组" onclick="useArguments"></button>
+    <button class="button" type="capsule" value="js 创建对象" onclick="creatObjByConstructor"></button>
+    <button class="button" type="capsule" value="let 与 var 区别代码块作用域不同" onclick="testLetVar"></button>
+    <button class="button" type="capsule" value="调用两个异步函数并发" onclick="testbingfa"></button>
+
 </div>

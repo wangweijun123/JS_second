@@ -57,6 +57,42 @@ export default {
     },
 
 // 异步函数
+    chengInnerService: async function() {
+        var actionData = {};
+        actionData.firstNum = 1024;
+        actionData.secondNum = 2048;
+        console.info("js MainAbility plus");
+        var action = {};
+        action.bundleName = 'com.huawei.hiaceservice';
+        action.abilityName = 'CalcInternalAbility';
+        action.messageCode = 1002;
+        action.data = actionData;
+        action.abilityType = ABILITY_TYPE_INTERNAL;
+        action.syncOption = ACTION_ASYNC;
+        console.info("js MainAbility 1002 callAbility ");
+        var result = await FeatureAbility.callAbility(action);
+        console.info("js MainAbility 1002 result :" + result);
+        var ret = JSON.parse(result);
+        console.info("js MainAbility 1002 ret.code :" + ret.code  + ", abilityResult:"+ret.abilityResult);
+        if (ret.code == 0) {
+            console.info('MainAbility 1002 plus result is:' + JSON.stringify(ret.abilityResult));
+            this.result = JSON.stringify(ret.abilityResult);
+        } else {
+            console.error('MainAbility  1002 plus error code:' + JSON.stringify(ret.code));
+        }
+    },
+    callMultiTask() {
+        console.info("js MainAbility plusInnerService ...");
+        // 这里是正在的并发(注意执行在主线程之后)
+        this.plusInnerService();
+        console.info("js MainAbility plusInnerService end");
+        console.info("js MainAbility chengInnerService ...");
+        // 这里是正在的并发(注意执行在主线程之后)
+        this.chengInnerService();
+        console.info("js MainAbility chengInnerService end");
+    },
+
+// 异步函数
     callPlugOutterService: async function() {
         var actionData = {};
         actionData.firstNum = 1024;
@@ -276,20 +312,59 @@ export default {
         console.log("x=" + x);
     },
     testbingfa() {
+        // 其实没有与主线程做到真正的并发，只有当主线程执行完成
+        // 才会去执行其他的线程
+        // js是单线程，指的是解释执行,容器是多线程的
+        // 同步代码执行完之后，才会去执行异步代码
         this.asyncFunc1();
         this.asyncFunc2();
-        console.log("main finised");
+        let i = 0;
+        console.log("entry sleep true");
+        this.sleep(2000);
+        console.log("main finised i:"+i);
     },
-    async asyncFunc1() {
+    asyncFunc1() {
         setTimeout(()=>{
             this.num++;
             console.log("func1 finised this.num="+this.num);
         }, 1000);
     },
-    async asyncFunc2() {
+     asyncFunc2() {
         setTimeout(()=>{
             this.num = this.num + 100;
             console.log("func2 finised this.num="+this.num);
-        }, 2000);
+        }, 3000);
+    },
+    //第一种，使用while循环
+    sleep(delay) {
+        var start = (new Date()).getTime();
+        while ((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    },
+    testbingfa2() {
+        this.asyncFunc3();
+        this.asyncFunc4();
+        this.asyncFunc5();
+        let i = 0;
+        console.log("entry sleep true");
+        this.sleep(2000);
+        console.log("main finised i:"+i);
+    },
+    // 只是声明了再函数上了声明了 async，根本就不是异步调用哈
+    async asyncFunc3() {
+        this.sleep(1000);
+        this.num++;
+        console.log("func3 finised this.num="+this.num);
+    },
+    async asyncFunc4() {
+        this.sleep(3000);
+        this.num = this.num + 100;
+        console.log("func4 finised this.num="+this.num);
+    },
+    async asyncFunc5() {
+        this.sleep(3000);
+        this.num = this.num + 100;
+        console.log("func5 finised this.num="+this.num);
     },
 }

@@ -6,6 +6,7 @@
     <button type="capsule" value="Go back" onclick="launch"></button>
 
     <button class="button" type="capsule" value="调用java内部服务" onclick="callInternalService"></button>
+    <button class="button" type="capsule" value="同时调用多个java内部服务" onclick="callMultiTask"></button>
 
     <text>{{result}}</text>
     <button class="button" type="capsule" value="调用java外部进程的部服务" onclick="callOutterService"></button>
@@ -15,6 +16,7 @@
     <button class="button" type="capsule" value="js 函数内置一个nb的形参arguments数组" onclick="useArguments"></button>
     <button class="button" type="capsule" value="js 创建对象" onclick="creatObjByConstructor"></button>
     <button class="button" type="capsule" value="let 与 var 区别代码块作用域不同" onclick="testLetVar"></button>
-    <button class="button" type="capsule" value="调用两个异步函数并发" onclick="testbingfa"></button>
+    <button class="button" type="capsule" value="调用两个异步函数并发(setTimeout)" onclick="testbingfa"></button>
+    <button class="button" type="capsule" value="调用两个async函数(并不是并发)" onclick="testbingfa2"></button>
 
 </div>

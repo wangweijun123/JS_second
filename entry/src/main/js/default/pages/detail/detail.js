@@ -16,10 +16,13 @@ export default {
             return this.firstName + " " + this.lastName;
         },
         person2:{
-            firstName:"Bill",
-            lastName: "Gates",
+            firstName:"",
+            lastName: "",
         },
         num:0
+    },
+    createPerson() {
+        this.person2.firstName = "xxx";
     },
     launch() {
         router.back();

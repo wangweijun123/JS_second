@@ -1,20 +1,75 @@
 .container {
     flex-direction: column;
 }
-/* 子绝 父相对*/
-.txt-image {
-    position: relative;
+
+.container-title {
+    flex-direction: row;
+    background-color: lawngreen;
+    /*
+    摆放内容，属性定义在容器上，作用与子控件
+     底下的两个属性最好都写上,使子布局剧中
+     */
+    justify-content: center;
+    align-items: center;
 }
-.image {
-    position: absolute;
+/*
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+*/
+.container-title-colomn {
+    flex-direction: column;
+}
+
+
+.title {
+    background-color: red;
+    /* 定义在具体控件上，作用于自己的内容 */
+    text-align: right;
 }
 
 .button {
     margin-top: 10px;
 }
-.title {
-    font-size: 35px;
-    background-color: aqua;
-    position: relative;
+
+.text-container-row{
+    flex-direction: row;
+    background-color: blueviolet;
+    justify-content: space-between;
+    padding: 25px;
+    margin: 10px;
+}
+
+.text-container-column{
+    flex-direction: column;
+    background-color: blueviolet;
+}
+
+.fixed-height-container {
+    height: 200px;
+    background-color: lawngreen;
+}
+
+.text1 {
+    background-color: #D16060;
+}
+
+.text2 {
+    background-color: #6073D1;
+}
+
+.text3 {
+    background-color: #D16060;
+    text-align: right; /* 当text的宽度是父控件宽度 */
+}
+
+.text4 {
+    background-color: #60A9D1;
+}
+
+.image {
+    background-color: #D138BD;
+    object-fit: contain;
 }
 
